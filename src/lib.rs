@@ -25,9 +25,9 @@ pub use self::fs::remove_dir_all;
 
 // #[cfg(not(windows))]
 #[cfg(all(feature = "mesalock_sgx", not(windows)))]
-use std::untrusted::fs::remove_dir_all;
+pub use std::untrusted::fs::remove_dir_all;
 
 #[cfg(all(not(feature = "mesalock_sgx"),not(windows)))]
-use std::fs::remove_dir_all;
+pub use std::fs::remove_dir_all;
 
 // pub use std::fs::remove_dir_all;
