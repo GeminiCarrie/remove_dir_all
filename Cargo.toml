@@ -19,5 +19,13 @@ categories = ["filesystem"]
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["std", "errhandlingapi", "winerror", "fileapi", "winbase"]}
 
+[target.'cfg(not(target_env = "sgx"))'.dependencies]
+sgx_tstd = {rev ="v1.0.9", git = "https://github.com/baidu/rust-sgx-sdk.git",optional = true}
+
 [dev-dependencies]
 doc-comment = "0.3"
+
+
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = ["sgx_tstd"]
